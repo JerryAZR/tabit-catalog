@@ -1,0 +1,124 @@
+# The catalog's editorial line (PROVIDERS.md): the providers the
+# downloaded catalog ships — the 80% ruling (the common providers
+# only; niche ones stay user config). Presence IS the allowlist.
+#
+# Policies (owner rulings, 2026-10):
+# - Dialects prefer anthropic-messages: the claude-code surface every
+#   serious provider maintains first.
+# - Coding/token plans over pay-as-you-go: where the vendor has a
+#   plan entry, the plan ships and the payg entry does not (plans
+#   are the common usage; payg is user config).
+# - Both CN and global variants ship when they exist — a future
+#   release model (one catalog per region) may split them; the core
+#   does not expect that yet.
+# - No env-key sharing: one set key must not light up several
+#   providers' models (calls through the wrong sibling error). The
+#   generator enforces uniqueness; colliding families get distinct
+#   env names below, derived from their models.dev ids.
+#
+# Base URLs follow tabit conventions — the engines append their
+# request paths:
+#   anthropic-messages  + /v1/messages      (base may end in /anthropic)
+#   openai-completions  + /chat/completions (base includes the /v1)
+#   openai-responses    + /responses        (base includes the /v1)
+#
+# Every entry must yield at least one model or the build fails (the
+# sync invariant).
+
+# --- Coding/token plans (CN + global pairs) ---
+
+[providers.kimi-code-plan-cn]
+api = "anthropic-messages"
+base_url = "https://api.kimi.com/coding"
+api_key_env = "KIMI_CODE_PLAN_CN_API_KEY"
+note = "owner-confirmed endpoint"
+
+[providers.kimi-code-plan-global]
+api = "anthropic-messages"
+base_url = "https://api.kimi.ai/coding"
+api_key_env = "KIMI_CODE_PLAN_GLOBAL_API_KEY"
+note = "global mirror of the cn endpoint structure"
+
+[providers.zhipuai-coding-plan]
+api = "anthropic-messages"
+base_url = "https://open.bigmodel.cn/api/anthropic"
+api_key_env = "ZHIPU_CODING_PLAN_CN_API_KEY"
+note = "owner-confirmed; verified via ZCode's builtin config"
+
+[providers.zai-coding-plan]
+api = "anthropic-messages"
+base_url = "https://api.z.ai/api/anthropic"
+api_key_env = "ZAI_CODING_PLAN_GLOBAL_API_KEY"
+note = "the intl coding plan rides the same anthropic surface as payg; verified via ZCode"
+
+[providers.minimax-cn-coding-plan]
+api = "anthropic-messages"
+base_url = "https://api.minimax.cn/anthropic"
+api_key_env = "MINIMAX_CN_CODING_PLAN_API_KEY"
+
+[providers.minimax-coding-plan]
+api = "anthropic-messages"
+base_url = "https://api.minimax.io/anthropic"
+api_key_env = "MINIMAX_CODING_PLAN_API_KEY"
+
+[providers.alibaba-token-plan-cn]
+api = "anthropic-messages"
+base_url = "https://token-plan.cn-beijing.maas.aliyuncs.com/apps/anthropic"
+api_key_env = "ALIBABA_TOKEN_PLAN_CN_API_KEY"
+note = "owner-confirmed endpoint; the coding plan (dashscope .../apps/anthropic) is deprecated"
+
+[providers.alibaba-token-plan]
+api = "anthropic-messages"
+base_url = "https://token-plan.ap-southeast-1.maas.aliyuncs.com/apps/anthropic"
+note = "global mirror of the cn endpoint structure"
+
+# --- No plan exists: pay-as-you-go ---
+
+[providers.anthropic]
+api = "anthropic-messages"
+base_url = "https://api.anthropic.com"
+
+[providers.openai]
+api = "openai-responses"
+base_url = "https://api.openai.com/v1"
+
+[providers.google]
+api = "openai-completions"
+base_url = "https://generativelanguage.googleapis.com/v1beta/openai"
+api_key_env = "GEMINI_API_KEY"
+note = "OpenAI-compat surface; the anthropic-compat endpoint is unverified — revisit"
+
+[providers.deepseek]
+api = "anthropic-messages"
+base_url = "https://api.deepseek.com/anthropic"
+note = "verified via ZCode's builtin provider config"
+
+[providers.fireworks-ai]
+api = "anthropic-messages"
+base_url = "https://api.fireworks.ai/inference"
+note = "verified via pi's provider data (the Messages surface)"
+
+[providers.xai]
+api = "openai-completions"
+base_url = "https://api.x.ai/v1"
+
+[providers.mistral]
+api = "openai-completions"
+base_url = "https://api.mistral.ai/v1"
+
+[providers.groq]
+api = "openai-completions"
+base_url = "https://api.groq.com/openai/v1"
+
+[providers.cerebras]
+api = "openai-completions"
+base_url = "https://api.cerebras.ai/v1"
+
+[providers.togetherai]
+api = "openai-completions"
+base_url = "https://api.together.xyz/v1"
+
+# Deliberately excluded: openrouter and the other aggregators (a
+# meta-provider re-introduces the model-list noise the catalog
+# exists to avoid); payg entries of vendors whose plan ships above;
+# everything else niche (user `providers.toml` is the seam).

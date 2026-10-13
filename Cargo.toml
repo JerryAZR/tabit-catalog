@@ -1,0 +1,15 @@
+[package]
+name = "tabit-catalog"
+version = "0.1.0"
+edition = "2024"
+description = "The tabit model catalog generator (PROVIDERS.md): builds catalog-<version>.toml + latest.toml from models.dev plus a curated overlay."
+
+[dependencies]
+tabit-config = "0.2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+toml = "1"
+sha2 = "0.10"
+reqwest = { version = "0.12", features = ["blocking"] }
+clap = { version = "4", features = ["derive"] }
+thiserror = "2"

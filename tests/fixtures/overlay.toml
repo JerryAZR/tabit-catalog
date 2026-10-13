@@ -1,0 +1,24 @@
+# The test overlay: a miniature of the real one, exercising every
+# ruling path (dialect ruling + endpoint override, npm inference,
+# name/env overrides) against tests/fixtures/api.json.
+
+[providers.anthropic]
+api = "anthropic-messages"
+base_url = "https://api.anthropic.com"
+
+[providers.openai]
+api = "openai-responses"
+base_url = "https://api.openai.com/v1"
+
+# Ruled by base_url override (the source carries the openai surface).
+[providers.zai]
+api = "anthropic-messages"
+base_url = "https://api.z.ai/api/anthropic"
+
+# No dialect ruling: the npm package (@ai-sdk/anthropic) infers it.
+[providers.inference-test]
+
+[providers.minimax]
+api = "anthropic-messages"
+base_url = "https://api.minimax.io/anthropic"
+name = "MiniMax (curated)"
