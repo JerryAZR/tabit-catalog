@@ -41,9 +41,27 @@ urls = [
 # auto_update = true
 ```
 
+**Variant lists.** The channel publishes several lists, each an
+independent catalog in its own subdirectory — point `catalog.urls`
+at whichever fits (the client concatenates `{base}/latest.toml`,
+so a subdirectory is just another base):
+
+| list | base suffix | carries |
+|---|---|---|
+| default | (root — the built-in coordinates) | the union of everything curated |
+| `cn/` | `.../catalog@catalog/cn` | the CN plans + providers reachable from China without a proxy |
+| `global/` | `.../catalog@catalog/global` | the global plans + western providers |
+| `openrouter/` | `.../catalog@catalog/openrouter` | the aggregator as an opt-in — its breadth where it was noise in the default list |
+
+```toml
+[catalog]
+urls = ["https://cdn.jsdelivr.net/gh/JerryAZR/tabit-catalog@catalog/cn"]
+# add the raw base as a second entry if you want the fallback mirror
+```
+
 **Keys.** One environment variable per provider — by design, so a
 set key lights up exactly one provider's models (never a
-half-erroring list):
+half-erroring list). In the default list:
 
 | plan | env var | endpoint |
 |---|---|---|
@@ -146,14 +164,18 @@ a deviation is *observed* in our own traffic), `extra_body`
 (deleted from tabit by design), anything not parseable as a plain
 providers fragment.
 
-## The overlay
+## The overlays
 
-`overlay.toml` is data, not code — the catalog's editorial line.
-Presence in `[providers.*]` is the allowlist; entries rule the
-dialect (`api`), the endpoint (`base_url`, tabit convention), and
-optionally `api_key_env` / display `name`. Endpoint rulings are
-verified against vendor configs where possible (ZCode's builtin
-catalog, pi's provider data) and carry provenance notes.
+`overlays/*.toml` are data, not code — the editorial lines. Every
+list (default, cn, global, openrouter) is the same mechanism: a
+plain overlay file and a `generate` run — no projection, no tags,
+no per-list generator features; a future split (plan/payg, a
+single vendor, anything) is just another file. Presence in
+`[providers.*]` is the allowlist; entries rule the dialect (`api`),
+the endpoint (`base_url`, tabit convention), and optionally
+`api_key_env` / display `name`. Endpoint rulings are verified
+against vendor configs where possible (ZCode's builtin catalog,
+pi's provider data) and carry provenance notes.
 
 Adding a provider: add an `[providers.<id>]` block (verify the
 endpoint), run `generate`, review the report.
