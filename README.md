@@ -95,7 +95,8 @@ tabit-catalog generate [--source <url|path>] [--overlay <file>] [--out <dir>]
 - `--source` defaults to `https://models.dev/api.json`; a local
   path builds fully offline (tests, reproducibility). Downloads are
   timeout- and size-capped (25 MiB).
-- `--overlay` defaults to `overlay.toml` — the curated allowlist.
+- `--overlay` defaults to `overlays/default.toml` — the curated
+  allowlist (variant lists beside it).
 - `--out` defaults to `dist/`: `catalog-<version>.toml` (an
   ordinary tabit providers fragment), `latest.toml` (the pointer
   `{version, sha256, min_schema}`), and a stdout report — every
