@@ -57,3 +57,23 @@ deliberately excluded (owner ruling).
 
 Adding a provider: add an `[providers.<id>]` block (verify the
 endpoint), run `generate`, review the report.
+
+## Publication
+
+`.github/workflows/publish.yml` wraps `generate`: on push to main
+(overlay edits publish immediately), daily at 03:17 UTC, and
+manually. The channel is the dedicated **`catalog` branch** —
+`latest.toml` (the mutable pointer) plus the immutable
+`catalog-<version>.toml` files, which accumulate forever (they are
+cache-forever URLs; a version must never change meaning). A run
+whose artifact sha256 matches the published pointer is a no-op
+(no version churn on content-identical days), and a concurrency
+group keeps runs from racing.
+
+The mirror bases (tabit's built-in `catalog.urls` default):
+
+- `https://cdn.jsdelivr.net/gh/JerryAZR/tabit-catalog@catalog`
+  (jsDelivr — reliable from China; ~12h branch-ref cache on the
+  pointer, acceptable under the client's 24h TTL)
+- `https://raw.githubusercontent.com/JerryAZR/tabit-catalog/catalog`
+  (GitHub raw)

@@ -1,0 +1,80 @@
+# The publishing flow: wrap the generator CLI (PROVIDERS.md's
+# channel). Runs on overlay/code changes (push to main), daily at
+# 03:17 UTC (an off-round minute — scheduler herds cluster at :00;
+# and it lands 11:17 Beijing, so a failure surfaces in the owner's
+# morning), and manually via workflow_dispatch.
+#
+# The channel lives on the dedicated `catalog` branch: `latest.toml`
+# (mutable pointer) plus the immutable, cache-forever
+# `catalog-<version>.toml` files, which accumulate — they must never
+# disappear (clients checksum them by URL). Content is versioned by
+# its sha256, so a run whose artifact matches the published pointer
+# is a no-op (no version churn on content-identical days).
+#
+# Mirrors (the coordinates tabit's built-in `catalog.urls` default
+# consumes): jsDelivr first (reliable from China), GitHub raw second.
+#   https://cdn.jsdelivr.net/gh/JerryAZR/tabit-catalog@catalog
+#   https://raw.githubusercontent.com/JerryAZR/tabit-catalog/catalog
+
+name: publish
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: publish
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - uses: Swatinem/rust-cache@v2
+
+      - name: Test
+        run: cargo test
+
+      - name: Generate
+        run: cargo run --release -- generate --out dist
+
+      - name: Publish to the catalog branch
+        run: |
+          set -euo pipefail
+          sha=$(sed -n 's/^sha256 = "\(.*\)"$/\1/p' dist/latest.toml)
+          version=$(sed -n 's/^version = "\(.*\)"$/\1/p' dist/latest.toml)
+
+          remote_branch=false
+          if git fetch origin catalog --depth=1 2>/dev/null; then remote_branch=true; fi
+
+          # Idempotence guard: the published pointer already names
+          # this exact content — nothing to do.
+          if $remote_branch && \
+             git show FETCH_HEAD:latest.toml 2>/dev/null | grep -qF "sha256 = \"$sha\""; then
+            echo "::notice::$version is already published (sha256 $sha) — nothing to do"
+            exit 0
+          fi
+
+          if $remote_branch; then
+            git worktree add -B catalog deploy FETCH_HEAD
+          else
+            git worktree add --orphan -b catalog deploy
+          fi
+          cp dist/latest.toml "dist/catalog-$version.toml" deploy/
+          cd deploy
+          git config user.name "tabit-catalog publisher"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git commit -qm "publish $version"
+          git push origin catalog
+          echo "::notice::published $version (sha256 $sha)"
