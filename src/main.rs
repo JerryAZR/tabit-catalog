@@ -28,8 +28,9 @@ enum Command {
         /// The models.dev api.json source: a URL or a local path.
         #[arg(long, default_value = "https://models.dev/api.json")]
         source: String,
-        /// The overlay file (the curated allowlist).
-        #[arg(long, default_value = "overlay.toml")]
+        /// The overlay file (the curated allowlist; variant lists
+        /// live beside the default one).
+        #[arg(long, default_value = "overlays/default.toml")]
         overlay: PathBuf,
         /// The output directory.
         #[arg(long, default_value = "dist")]

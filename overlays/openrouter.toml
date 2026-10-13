@@ -1,0 +1,8 @@
+# The openrouter list: the aggregator as an opt-in channel — its
+# breadth is the point here, where it was noise in the default
+# list. Same filters as every list (reasoning, tool-calling,
+# non-deprecated); one env key, one provider.
+
+[providers.openrouter]
+api = "openai-completions"
+base_url = "https://openrouter.ai/api/v1"

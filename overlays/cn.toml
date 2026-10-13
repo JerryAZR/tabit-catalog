@@ -1,0 +1,33 @@
+# The CN list: what works from China without a proxy — the CN
+# coding/token plans plus the providers reachable from CN.
+# Western endpoints (api.anthropic.com, api.openai.com, …) are
+# blocked from CN; proxy users take the default list instead.
+# Same mechanism as the default list (README: variant lists).
+
+[providers.kimi-code-plan-cn]
+api = "anthropic-messages"
+base_url = "https://api.kimi.com/coding"
+api_key_env = "KIMI_CODE_PLAN_CN_API_KEY"
+note = "owner-confirmed endpoint"
+
+[providers.zhipuai-coding-plan]
+api = "anthropic-messages"
+base_url = "https://open.bigmodel.cn/api/anthropic"
+api_key_env = "ZHIPU_CODING_PLAN_CN_API_KEY"
+note = "owner-confirmed; verified via ZCode's builtin config"
+
+[providers.minimax-cn-coding-plan]
+api = "anthropic-messages"
+base_url = "https://api.minimax.cn/anthropic"
+api_key_env = "MINIMAX_CN_CODING_PLAN_API_KEY"
+
+[providers.alibaba-token-plan-cn]
+api = "anthropic-messages"
+base_url = "https://token-plan.cn-beijing.maas.aliyuncs.com/apps/anthropic"
+api_key_env = "ALIBABA_TOKEN_PLAN_CN_API_KEY"
+note = "owner-confirmed endpoint; the coding plan (dashscope .../apps/anthropic) is deprecated"
+
+[providers.deepseek]
+api = "anthropic-messages"
+base_url = "https://api.deepseek.com/anthropic"
+note = "verified via ZCode's builtin provider config; reachable from CN"

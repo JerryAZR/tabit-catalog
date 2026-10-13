@@ -1,3 +1,8 @@
+# The DEFAULT list (the union; tabit's built-in coordinates point
+# here). Variant lists — cn, global, openrouter — are separate
+# overlay files beside this one: same mechanism everywhere, no
+# projection, no tags.
+#
 # The catalog's editorial line (PROVIDERS.md): the providers the
 # downloaded catalog ships — the 80% ruling (the common providers
 # only; niche ones stay user config). Presence IS the allowlist.

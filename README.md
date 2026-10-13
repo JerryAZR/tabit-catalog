@@ -162,10 +162,12 @@ endpoint), run `generate`, review the report.
 
 `.github/workflows/publish.yml` wraps `generate`: on push to main
 (overlay edits publish immediately), daily at 03:17 UTC, and
-manually. The channel is the dedicated **`catalog` branch** —
-`latest.toml` (the mutable pointer) plus the immutable
-`catalog-<version>.toml` files, which accumulate forever (they are
-cache-forever URLs; a version must never change meaning). A
+manually — generating every list (default at the root, variants
+in subdirectories). The channel is the dedicated **`catalog`
+branch**: `latest.toml` per list (the mutable pointer) plus the
+immutable `catalog-<version>.toml` files, which accumulate
+forever (they are cache-forever URLs; a version must never change
+meaning). A run where no list changed commits nothing, and a
 concurrency group keeps runs from racing.
 
 The mirror bases (tabit's built-in `catalog.urls` default):
