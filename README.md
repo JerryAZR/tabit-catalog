@@ -46,12 +46,15 @@ independent catalog in its own subdirectory — point `catalog.urls`
 at whichever fits (the client concatenates `{base}/latest.toml`,
 so a subdirectory is just another base):
 
-| list | base suffix | carries |
+| list | jsDelivr base (add `/cn`, `/global`, … before use) | carries |
 |---|---|---|
-| default | (root — the built-in coordinates) | the union of everything curated |
-| `cn/` | `.../catalog@catalog/cn` | the CN plans + providers reachable from China without a proxy |
-| `global/` | `.../catalog@catalog/global` | the global plans + western providers |
-| `openrouter/` | `.../catalog@catalog/openrouter` | the aggregator as an opt-in — its breadth where it was noise in the default list |
+| default | `https://cdn.jsdelivr.net/gh/JerryAZR/tabit-catalog@catalog` (root — the built-in coordinates) | the union of everything curated |
+| `cn` | `https://cdn.jsdelivr.net/gh/JerryAZR/tabit-catalog@catalog/cn` | the CN plans + providers reachable from China without a proxy |
+| `global` | `https://cdn.jsdelivr.net/gh/JerryAZR/tabit-catalog@catalog/global` | the global plans + western providers |
+| `openrouter` | `https://cdn.jsdelivr.net/gh/JerryAZR/tabit-catalog@catalog/openrouter` | the aggregator as an opt-in — its breadth where it was noise in the default list |
+
+(The raw mirror is the same layout:
+`https://raw.githubusercontent.com/JerryAZR/tabit-catalog/catalog/<list>`.)
 
 ```toml
 [catalog]
