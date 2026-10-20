@@ -66,13 +66,34 @@ jobs:
           else
             git worktree add --orphan -b catalog deploy
           fi
-          cp -r dist/. deploy/
+
+          # Per-list idempotence: a list whose content (sha256) is
+          # unchanged keeps its published version — no new file, no
+          # pointer move — so an unchanged day adds nothing and the
+          # published version's date means "the day this list last
+          # changed".
+          publish_list() {
+            list="$1" # "" for the root list, "<name>/" for variants
+            sha=$(sed -n 's/^sha256 = "\(.*\)"$/\1/p' "dist/$list/latest.toml")
+            if [ -f "deploy/$list/latest.toml" ]; then
+              published=$(sed -n 's/^sha256 = "\(.*\)"$/\1/p' "deploy/$list/latest.toml")
+              if [ "$sha" = "$published" ]; then
+                echo "::notice::${list:-root}: content unchanged — keeping published version"
+                return 0
+              fi
+            fi
+            mkdir -p "deploy/$list"
+            cp "dist/$list/latest.toml" "dist/$list"/catalog-*.toml "deploy/$list/"
+            echo "::notice::${list:-root}: publishing $(sed -n 's/^version = "\(.*\)"$/\1/p' "dist/$list/latest.toml")"
+          }
+          publish_list ""
+          for d in dist/*/; do publish_list "$(basename "$d")/"; done
+
           cd deploy
           git config user.name "tabit-catalog publisher"
           git config user.email "actions@users.noreply.github.com"
           git add -A
-          # Idempotence guard: nothing changed across any list — a
-          # no-op (no version churn on content-identical days).
+          # Final safety net: nothing staged across any list — a no-op.
           if git diff --cached --quiet; then
             version=$(sed -n 's/^version = "\(.*\)"$/\1/p' latest.toml)
             echo "::notice::$version: every list already current — nothing to do"

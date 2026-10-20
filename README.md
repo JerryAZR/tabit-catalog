@@ -193,8 +193,11 @@ in subdirectories). The channel is the dedicated **`catalog`
 branch**: `latest.toml` per list (the mutable pointer) plus the
 immutable `catalog-<version>.toml` files, which accumulate
 forever (they are cache-forever URLs; a version must never change
-meaning). A run where no list changed commits nothing, and a
-concurrency group keeps runs from racing.
+meaning). A run where no list changed commits nothing — and a
+list whose content is unchanged keeps its published version (no
+new file, no pointer move), so the version's date is the day that
+list last actually changed. A concurrency group keeps runs from
+racing.
 
 The mirror bases (tabit's built-in `catalog.urls` default):
 
