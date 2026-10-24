@@ -1,0 +1,719 @@
+[providers.alibaba-token-plan-cn]
+name = "Alibaba Token Plan (China)"
+base_url = "https://token-plan.cn-beijing.maas.aliyuncs.com/apps/anthropic"
+api = "anthropic-messages"
+api_key_env = "ALIBABA_TOKEN_PLAN_CN_API_KEY"
+
+[[providers.alibaba-token-plan-cn.models]]
+id = "MiniMax-M2.5"
+reasoning = true
+context_window = 196608
+max_tokens = 32768
+thinking_levels = [
+    "off",
+    "low",
+    "medium",
+    "high",
+    "xhigh",
+    "max",
+]
+
+[providers.alibaba-token-plan-cn.models.cost]
+input = 0.0
+output = 0.0
+cache_read = 0.0
+cache_write = 0.0
+
+[[providers.alibaba-token-plan-cn.models]]
+id = "deepseek-v4-flash-0731"
+name = "DeepSeek V4 Flash 0731"
+reasoning = true
+context_window = 1000000
+max_tokens = 384000
+thinking_levels = [
+    "high",
+    "max",
+]
+
+[providers.alibaba-token-plan-cn.models.cost]
+input = 0.0
+output = 0.0
+cache_read = 0.0
+cache_write = 0.0
+
+[[providers.alibaba-token-plan-cn.models]]
+id = "deepseek-v4-pro"
+name = "DeepSeek V4 Pro"
+reasoning = true
+context_window = 1000000
+max_tokens = 384000
+thinking_levels = [
+    "high",
+    "max",
+]
+
+[providers.alibaba-token-plan-cn.models.cost]
+input = 0.0
+output = 0.0
+cache_read = 0.0
+cache_write = 0.0
+
+[[providers.alibaba-token-plan-cn.models]]
+id = "deepseek-v4-pro-0813"
+name = "DeepSeek V4 Pro 0813"
+reasoning = true
+context_window = 1000000
+max_tokens = 384000
+thinking_levels = [
+    "high",
+    "max",
+]
+
+[providers.alibaba-token-plan-cn.models.cost]
+input = 0.0
+output = 0.0
+cache_read = 0.0
+cache_write = 0.0
+
+[[providers.alibaba-token-plan-cn.models]]
+id = "deepseek-v4.1-flash"
+name = "DeepSeek V4.1 Flash"
+reasoning = true
+input = [
+    "text",
+    "image",
+]
+context_window = 1000000
+max_tokens = 384000
+thinking_levels = [
+    "low",
+    "high",
+    "max",
+]
+
+[providers.alibaba-token-plan-cn.models.cost]
+input = 0.0
+output = 0.0
+cache_read = 0.0
+cache_write = 0.0
+
+[[providers.alibaba-token-plan-cn.models]]
+id = "deepseek-v4.1-flash-1017"
+name = "DeepSeek V4.1 Flash 1017"
+reasoning = true
+input = [
+    "text",
+    "image",
+]
+context_window = 1000000
+max_tokens = 384000
+thinking_levels = [
+    "low",
+    "high",
+    "max",
+]
+
+[providers.alibaba-token-plan-cn.models.cost]
+input = 0.0
+output = 0.0
+cache_read = 0.0
+cache_write = 0.0
+
+[[providers.alibaba-token-plan-cn.models]]
+id = "glm-5"
+name = "GLM-5"
+reasoning = true
+context_window = 202752
+max_tokens = 16384
+thinking_levels = [
+    "off",
+    "low",
+    "medium",
+    "high",
+    "xhigh",
+    "max",
+]
+
+[providers.alibaba-token-plan-cn.models.cost]
+input = 0.0
+output = 0.0
+cache_read = 0.0
+cache_write = 0.0
+
+[[providers.alibaba-token-plan-cn.models]]
+id = "glm-5.1"
+name = "GLM-5.1"
+reasoning = true
+context_window = 202752
+max_tokens = 128000
+thinking_levels = [
+    "off",
+    "low",
+    "medium",
+    "high",
+    "xhigh",
+    "max",
+]
+
+[providers.alibaba-token-plan-cn.models.cost]
+input = 0.0
+output = 0.0
+cache_read = 0.0
+cache_write = 0.0
+
+[[providers.alibaba-token-plan-cn.models]]
+id = "glm-5.2"
+name = "GLM-5.2"
+reasoning = true
+context_window = 1000000
+max_tokens = 131072
+thinking_levels = [
+    "high",
+    "max",
+]
+
+[providers.alibaba-token-plan-cn.models.cost]
+input = 0.0
+output = 0.0
+cache_read = 0.0
+cache_write = 0.0
+
+[[providers.alibaba-token-plan-cn.models]]
+id = "glm-5.3"
+name = "GLM-5.3"
+reasoning = true
+context_window = 1000000
+max_tokens = 131072
+thinking_levels = [
+    "low",
+    "high",
+    "max",
+]
+
+[providers.alibaba-token-plan-cn.models.cost]
+input = 0.0
+output = 0.0
+cache_read = 0.0
+cache_write = 0.0
+
+[[providers.alibaba-token-plan-cn.models]]
+id = "kimi-k2.5"
+name = "Kimi K2.5"
+reasoning = true
+input = [
+    "text",
+    "image",
+]
+context_window = 262144
+max_tokens = 98304
+thinking_levels = [
+    "off",
+    "low",
+    "medium",
+    "high",
+    "xhigh",
+    "max",
+]
+
+[providers.alibaba-token-plan-cn.models.cost]
+input = 0.0
+output = 0.0
+cache_read = 0.0
+cache_write = 0.0
+
+[[providers.alibaba-token-plan-cn.models]]
+id = "kimi-k2.6"
+name = "Kimi K2.6"
+reasoning = true
+input = [
+    "text",
+    "image",
+]
+context_window = 262144
+max_tokens = 262144
+thinking_levels = [
+    "off",
+    "low",
+    "medium",
+    "high",
+    "xhigh",
+    "max",
+]
+
+[providers.alibaba-token-plan-cn.models.cost]
+input = 0.0
+output = 0.0
+cache_read = 0.0
+cache_write = 0.0
+
+[[providers.alibaba-token-plan-cn.models]]
+id = "kimi-k2.7-code"
+name = "Kimi K2.7 Code"
+reasoning = true
+input = [
+    "text",
+    "image",
+]
+context_window = 262144
+max_tokens = 262144
+thinking_levels = [
+    "off",
+    "low",
+    "medium",
+    "high",
+    "xhigh",
+    "max",
+]
+
+[providers.alibaba-token-plan-cn.models.cost]
+input = 0.0
+output = 0.0
+cache_read = 0.0
+cache_write = 0.0
+
+[[providers.alibaba-token-plan-cn.models]]
+id = "qwen3.6-flash"
+name = "Qwen3.6 Flash"
+reasoning = true
+input = [
+    "text",
+    "image",
+]
+context_window = 1000000
+max_tokens = 65536
+thinking_levels = [
+    "off",
+    "low",
+    "medium",
+    "high",
+    "xhigh",
+    "max",
+]
+
+[providers.alibaba-token-plan-cn.models.cost]
+input = 0.0
+output = 0.0
+cache_read = 0.0
+cache_write = 0.0
+
+[[providers.alibaba-token-plan-cn.models]]
+id = "qwen3.6-plus"
+name = "Qwen3.6 Plus"
+reasoning = true
+input = [
+    "text",
+    "image",
+]
+context_window = 1000000
+max_tokens = 65536
+thinking_levels = [
+    "off",
+    "low",
+    "medium",
+    "high",
+    "xhigh",
+    "max",
+]
+
+[providers.alibaba-token-plan-cn.models.cost]
+input = 0.0
+output = 0.0
+cache_read = 0.0
+cache_write = 0.0
+
+[[providers.alibaba-token-plan-cn.models]]
+id = "qwen3.7-max"
+name = "Qwen3.7 Max"
+reasoning = true
+context_window = 1000000
+max_tokens = 131072
+thinking_levels = [
+    "off",
+    "low",
+    "medium",
+    "high",
+    "xhigh",
+    "max",
+]
+
+[providers.alibaba-token-plan-cn.models.cost]
+input = 0.0
+output = 0.0
+cache_read = 0.0
+cache_write = 0.0
+
+[[providers.alibaba-token-plan-cn.models]]
+id = "qwen3.7-plus"
+name = "Qwen3.7 Plus"
+reasoning = true
+input = [
+    "text",
+    "image",
+]
+context_window = 1000000
+max_tokens = 65536
+thinking_levels = [
+    "off",
+    "low",
+    "medium",
+    "high",
+    "xhigh",
+    "max",
+]
+
+[providers.alibaba-token-plan-cn.models.cost]
+input = 0.0
+output = 0.0
+cache_read = 0.0
+cache_write = 0.0
+
+[[providers.alibaba-token-plan-cn.models]]
+id = "qwen3.8-flash"
+name = "Qwen3.8 Flash"
+reasoning = true
+input = [
+    "text",
+    "image",
+]
+context_window = 1000000
+max_tokens = 131072
+thinking_levels = [
+    "low",
+    "medium",
+    "xhigh",
+]
+
+[providers.alibaba-token-plan-cn.models.cost]
+input = 0.0
+output = 0.0
+cache_read = 0.0
+cache_write = 0.0
+
+[[providers.alibaba-token-plan-cn.models]]
+id = "qwen3.8-max"
+name = "Qwen3.8 Max"
+reasoning = true
+input = [
+    "text",
+    "image",
+]
+context_window = 1000000
+max_tokens = 131072
+thinking_levels = [
+    "low",
+    "medium",
+    "xhigh",
+]
+
+[providers.alibaba-token-plan-cn.models.cost]
+input = 0.0
+output = 0.0
+cache_read = 0.0
+cache_write = 0.0
+
+[providers.deepseek]
+name = "DeepSeek"
+base_url = "https://api.deepseek.com/anthropic"
+api = "anthropic-messages"
+api_key_env = "DEEPSEEK_API_KEY"
+
+[[providers.deepseek.models]]
+id = "deepseek-flash"
+name = "DeepSeek V4.1 Flash 1017"
+reasoning = true
+input = [
+    "text",
+    "image",
+]
+context_window = 1048576
+max_tokens = 393216
+thinking_levels = [
+    "low",
+    "high",
+    "max",
+]
+
+[providers.deepseek.models.cost]
+input = 0.15
+output = 0.6
+cache_read = 0.003
+cache_write = 0.0
+
+[[providers.deepseek.models]]
+id = "deepseek-v4-pro"
+name = "DeepSeek V4 Pro"
+reasoning = true
+context_window = 1048576
+max_tokens = 393216
+thinking_levels = [
+    "low",
+    "high",
+    "max",
+]
+
+[providers.deepseek.models.cost]
+input = 0.66
+output = 1.98
+cache_read = 0.022
+cache_write = 0.0
+
+[providers.kimi-code-plan-cn]
+name = "Kimi For Coding (kimi.com)"
+base_url = "https://api.kimi.com/coding"
+api = "anthropic-messages"
+api_key_env = "KIMI_CODE_PLAN_CN_API_KEY"
+
+[[providers.kimi-code-plan-cn.models]]
+id = "k3"
+name = "Kimi K3"
+reasoning = true
+input = [
+    "text",
+    "image",
+]
+context_window = 1048576
+max_tokens = 131072
+thinking_levels = [
+    "off",
+    "low",
+    "high",
+    "max",
+]
+
+[providers.kimi-code-plan-cn.models.cost]
+input = 0.0
+output = 0.0
+cache_read = 0.0
+cache_write = 0.0
+
+[[providers.kimi-code-plan-cn.models]]
+id = "k3-256k"
+name = "Kimi K3-256K"
+reasoning = true
+input = [
+    "text",
+    "image",
+]
+context_window = 262144
+max_tokens = 131072
+thinking_levels = [
+    "off",
+    "low",
+    "high",
+    "max",
+]
+
+[providers.kimi-code-plan-cn.models.cost]
+input = 0.0
+output = 0.0
+cache_read = 0.0
+cache_write = 0.0
+
+[[providers.kimi-code-plan-cn.models]]
+id = "k3.1-pro"
+name = "Kimi K3.1 Pro"
+reasoning = true
+input = [
+    "text",
+    "image",
+]
+context_window = 1048576
+max_tokens = 131072
+thinking_levels = [
+    "low",
+    "high",
+    "max",
+]
+
+[providers.kimi-code-plan-cn.models.cost]
+input = 0.0
+output = 0.0
+cache_read = 0.0
+cache_write = 0.0
+
+[[providers.kimi-code-plan-cn.models]]
+id = "k3.1-pro-highspeed"
+name = "Kimi K3.1 Pro Highspeed"
+reasoning = true
+input = [
+    "text",
+    "image",
+]
+context_window = 1048576
+max_tokens = 131072
+thinking_levels = [
+    "low",
+    "high",
+    "max",
+]
+
+[providers.kimi-code-plan-cn.models.cost]
+input = 0.0
+output = 0.0
+cache_read = 0.0
+cache_write = 0.0
+
+[[providers.kimi-code-plan-cn.models]]
+id = "kimi-for-coding"
+name = "Kimi K2.8 Preview"
+reasoning = true
+input = [
+    "text",
+    "image",
+]
+context_window = 1048576
+max_tokens = 32768
+thinking_levels = [
+    "off",
+    "low",
+    "high",
+    "max",
+]
+
+[providers.kimi-code-plan-cn.models.cost]
+input = 0.0
+output = 0.0
+cache_read = 0.0
+cache_write = 0.0
+
+[[providers.kimi-code-plan-cn.models]]
+id = "kimi-for-coding-highspeed"
+name = "Kimi For Coding HighSpeed"
+reasoning = true
+input = [
+    "text",
+    "image",
+]
+context_window = 262144
+max_tokens = 32768
+thinking_levels = [
+    "off",
+    "low",
+    "medium",
+    "high",
+    "xhigh",
+    "max",
+]
+
+[providers.kimi-code-plan-cn.models.cost]
+input = 0.0
+output = 0.0
+cache_read = 0.0
+cache_write = 0.0
+
+[providers.minimax-cn-coding-plan]
+name = "MiniMax Token Plan (minimax.cn)"
+base_url = "https://api.minimax.cn/anthropic"
+api = "anthropic-messages"
+api_key_env = "MINIMAX_CN_CODING_PLAN_API_KEY"
+
+[[providers.minimax-cn-coding-plan.models]]
+id = "MiniMax-M3"
+reasoning = true
+input = [
+    "text",
+    "image",
+]
+context_window = 1000000
+max_tokens = 524288
+thinking_levels = [
+    "off",
+    "low",
+    "medium",
+    "high",
+    "xhigh",
+    "max",
+]
+
+[providers.minimax-cn-coding-plan.models.cost]
+input = 0.0
+output = 0.0
+cache_read = 0.0
+cache_write = 0.0
+
+[[providers.minimax-cn-coding-plan.models]]
+id = "MiniMax-M3.1-Flash"
+reasoning = true
+input = [
+    "text",
+    "image",
+]
+context_window = 1000000
+max_tokens = 524288
+thinking_levels = [
+    "low",
+    "medium",
+    "high",
+    "xhigh",
+    "max",
+]
+
+[providers.minimax-cn-coding-plan.models.cost]
+input = 0.0
+output = 0.0
+cache_read = 0.0
+cache_write = 0.0
+
+[providers.zhipuai-coding-plan]
+name = "Zhipu AI Coding Plan"
+base_url = "https://open.bigmodel.cn/api/anthropic"
+api = "anthropic-messages"
+api_key_env = "ZHIPU_CODING_PLAN_CN_API_KEY"
+
+[[providers.zhipuai-coding-plan.models]]
+id = "glm-5.3"
+name = "GLM-5.3"
+reasoning = true
+context_window = 1000000
+max_tokens = 131072
+thinking_levels = [
+    "low",
+    "high",
+    "max",
+]
+
+[providers.zhipuai-coding-plan.models.cost]
+input = 0.0
+output = 0.0
+cache_read = 0.0
+cache_write = 0.0
+
+[[providers.zhipuai-coding-plan.models]]
+id = "glm-5.3-flash"
+name = "GLM-5.3-Flash"
+reasoning = true
+input = [
+    "text",
+    "image",
+]
+context_window = 1000000
+max_tokens = 131072
+thinking_levels = [
+    "low",
+    "high",
+    "max",
+]
+
+[providers.zhipuai-coding-plan.models.cost]
+input = 0.0
+output = 0.0
+cache_read = 0.0
+cache_write = 0.0
+
+[[providers.zhipuai-coding-plan.models]]
+id = "glm-5.3-highspeed"
+name = "GLM-5.3 Highspeed"
+reasoning = true
+context_window = 1000000
+max_tokens = 131072
+thinking_levels = [
+    "low",
+    "high",
+    "max",
+]
+
+[providers.zhipuai-coding-plan.models.cost]
+input = 0.0
+output = 0.0
+cache_read = 0.0
+cache_write = 0.0
